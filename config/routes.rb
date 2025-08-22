@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   root "articles#index"
   # localhost:3000/posts/
   resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :posts do
+  resources :comments, only: [:create]
+  end
 end
