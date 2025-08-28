@@ -1,18 +1,29 @@
 <h1>投稿を編集</h1>
 
-<%= form_with(model: @post, local: true) do |form| %>
-  <div>
-    <%= form.label :title, "タイトル" %><br>
+<%= form_with(model: @post, html: {class: "form-container"}) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @post.errors.count %>個のエラーがあります:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-input">
+    <%= form.label :title, "タイトル" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :content, "内容" %><br>
+  <div class="form-input">
+    <%= form.label :content, "内容" %>
     <%= form.text_area :content %>
   </div>
 
-  <div>
-    <%= form.submit "更新する" %>
+  <div class="button-container">
+    <%= form.submit "更新する", class: "link-button" %>
+    <%= link_to "キャンセル", posts_path, class: "link-button" %>
   </div>
 <% end %>
-v

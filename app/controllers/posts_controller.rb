@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [ :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def index
-      @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
     end
 
     def new
@@ -13,7 +13,9 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
 
       if @post.save
-        redirect_to posts_path
+        redirect_to posts_path, notice: '投稿が作成されました。'
+      else
+        render :new
       end
     end
 
@@ -21,12 +23,11 @@ class PostsController < ApplicationController
     end
 
     def show
-      @post
     end
 
     def update
         if @post.update(post_params)
-            redirect_to posts_path
+            redirect_to posts_path, notice: '投稿が更新されました。'
         else 
             render :edit
         end
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
 
     def destroy 
         @post.destroy
-        redirect_to posts_path
+        redirect_to posts_path, notice: '投稿が削除されました。'
     end
 
     private

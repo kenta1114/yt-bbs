@@ -1,0 +1,20 @@
+databases:
+  - name: yt-bbs-db
+    databaseName: yt_bbs_production
+    user: yt_bbs
+
+services:
+  - type: web
+    name: yt-bbs
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: yt-bbs-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: RAILS_ENV
+        value: production
