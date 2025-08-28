@@ -61,13 +61,14 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "example.com" }
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
+  # SMTPメール送信設定例（必要に応じて有効化してください）
   # config.action_mailer.smtp_settings = {
   #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
   #   password: Rails.application.credentials.dig(:smtp, :password),
   #   address: "smtp.example.com",
   #   port: 587,
-  #   authentication: :plain
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
   # }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -82,8 +83,8 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
+  #   "your-app-name.onrender.com",     # Renderのサブドメインを許可
+  #   /.*\.onrender\.com/               # Renderの全サブドメインを許可
   # ]
   #
   # Skip DNS rebinding protection for the default health check endpoint.

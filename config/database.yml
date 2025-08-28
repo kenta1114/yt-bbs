@@ -22,25 +22,7 @@ test:
 
 # Production database configuration for Render
 production:
-  primary:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  cache:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
-    database: <%= ENV.fetch('DATABASE_NAME', 'yt_bbs_production') %>_cache
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    migrations_paths: db/cache_migrate
-  queue:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
-    database: <%= ENV.fetch('DATABASE_NAME', 'yt_bbs_production') %>_queue
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    migrations_paths: db/queue_migrate
-  cable:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
-    database: <%= ENV.fetch('DATABASE_NAME', 'yt_bbs_production') %>_cable
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    migrations_paths: db/cable_migrate
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
