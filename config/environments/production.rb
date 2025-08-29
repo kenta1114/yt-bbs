@@ -83,11 +83,11 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = [ :id ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "your-app-name.onrender.com",     # Renderのサブドメインを許可
-  #   /.*\.onrender\.com/               # Renderの全サブドメインを許可
-  # ]
+  config.hosts = [
+    /.*\.railway\.app/,              # Railway の全サブドメインを許可
+    /.*\.up\.railway\.app/           # Railway の preview URL も許可
+  ]
   #
   # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

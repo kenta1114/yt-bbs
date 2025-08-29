@@ -24,6 +24,26 @@ Things you may want to cover:
 * ...
 # yt-bbs
 
+# yt-bbs
+
+Rails掲示板アプリケーション
+
+## 機能
+- 投稿の作成・編集・削除
+- コメント機能
+- バリデーション機能
+
+## Railway でのデプロイ手順
+
+1. [Railway.app](https://railway.app) にGitHubでサインアップ
+2. "New Project" → "Deploy from GitHub repo" → `kenta1114/yt-bbs` を選択
+3. PostgreSQL データベースを追加:
+   - "New" → "Database" → "PostgreSQL"
+4. 環境変数を設定:
+   - `RAILS_MASTER_KEY`: `81c5e0a21ab53f29ffdea66c2279419c`
+   - `DATABASE_URL`: (PostgreSQLから自動設定)
+5. Deploy ボタンでデプロイ開始
+
 ## Renderでのデプロイ手順
 
 1. GitHubにプッシュ済みのこのリポジトリをRender.comに連携
@@ -34,4 +54,4 @@ Things you may want to cover:
 6. PostgreSQLデータベースをRenderで作成し、`DATABASE_URL`を自動連携
 7. デプロイボタンを押すだけでOK
 
-詳しくは `render.yaml` も参照してください。
+詳しくは `render.yaml` や `railway.json` も参照してください。
